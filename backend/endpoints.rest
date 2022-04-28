@@ -1,0 +1,24 @@
+POST http://localhost:8000/api/user/register HTTP/1.1
+# header name: header value
+Content-Type: application/json
+
+# content
+{
+    "usertype": "doctor",
+    "username": "john",
+    "email": "john@example.com",
+    "password": "john123"
+}
+
+###
+
+POST http://localhost:8000/api/user/login HTTP/1.1
+# header name: header value
+Content-Type: application/json
+
+# content
+{
+    "usertype": "doctor",
+    "username": "john",
+    "password": "john123"
+}

@@ -1,0 +1,40 @@
+.patient-profile-container {
+  padding: 2rem;
+  width: 60vw;
+  margin: 0 auto;
+}
+
+.patient-personal-information {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2rem;
+  row-gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.patient-contact-information {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2rem;
+  row-gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+  margin-bottom: .25rem;
+}
+
+.mat-divider {
+  margin-bottom: 1rem;
+}
+
+.patient-profile-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.patient-profile-actions button {
+  width: 200px;
+}

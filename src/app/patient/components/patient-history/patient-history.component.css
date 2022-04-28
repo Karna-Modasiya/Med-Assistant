@@ -1,0 +1,78 @@
+.patient-history-parent-container{
+  overflow: hidden;
+  height: 84.3vh;
+  position: relative;
+}
+
+.patient-history-container {
+  padding: 2rem;
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.patient-history-blurred{
+  padding: 2rem;
+  width: 80vw;
+  margin: 0 auto;
+  opacity: 0.3;
+}
+
+table {
+  width: 100%;
+}
+
+.patient-history-container th{
+  font-size: 20px;
+}
+
+.patient-history-container td{
+  font-size: 16px;
+}
+
+.patient-history-blurred th{
+  font-size: 20px;
+}
+
+.patient-history-blurred td{
+  font-size: 16px;
+}
+
+.mat-card {
+  width: 50%;
+  /* height: ; */
+  max-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0px 0px 2px 2px black;
+  border-radius: 10px;
+  padding-bottom: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.mat-card .closebtn{
+  margin-bottom: 10px;
+  align-self: flex-end;
+}
+
+.parameter-table{
+  max-width: 40%;
+  margin-bottom: 20px;
+}
+
+.medicine-table{
+  max-width: 70%;
+}
+
+.display-prescription{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

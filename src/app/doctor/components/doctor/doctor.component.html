@@ -1,0 +1,30 @@
+<mat-toolbar class="toolbar" color="primary">
+    <div class="app-title-wrapper">
+        <span class="app-logo">
+            <img src="../../../../assets/malogo.png">
+        </span>
+        <span class="app-title">
+            Med Assist
+        </span>
+    </div>
+    <div class="user-info-wrapper">
+        <span class="user-title">
+            Dr. {{ name }}
+        </span>
+        <span class="user-logo">
+            <img src="../../../../assets/user.png">
+        </span>
+        <button mat-icon-button class="btn-logout" (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i></button>
+    </div>
+</mat-toolbar>
+<nav mat-tab-nav-bar [tabPanel]="tabPanel">
+    <a mat-tab-link *ngFor="let link of links"
+    (click)="activeLink = link.label"
+    [active]="activeLink == link.label"
+    routerLink="{{link.link}}">
+        {{ link.label }}
+    </a>
+</nav>
+<mat-tab-nav-panel #tabPanel>
+    <router-outlet></router-outlet>
+</mat-tab-nav-panel>

@@ -1,0 +1,21 @@
+.auth-wrapper {
+    display: flex;
+}
+
+.auth-wrapper .img-wrapper {
+    height: 100vh;
+    width: 50vw;
+    background: url('../../../../assets/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 0px 7px 2px black;
+}
+
+.auth-wrapper .form-wrapper {
+    height: 100vh;
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

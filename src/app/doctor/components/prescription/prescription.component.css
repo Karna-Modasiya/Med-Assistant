@@ -1,0 +1,162 @@
+.prescription-container {
+  padding: 2rem;
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.card-holder {
+  display: flex;
+  justify-content: space-between;
+}
+
+.medicine-input {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+.parameter-input {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  margin-bottom: 2rem;
+}
+
+.mat-card > .mat-card-actions:last-child {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .card-actions {
+} */
+
+table {
+  width: 100%;
+}
+
+/* .mat-column-position {
+  width: 7rem;
+} */
+
+.mat-column-quantity {
+  /* width: 10rem; */
+  text-align: right;
+}
+
+.mat-column-dosage {
+  /* width: 40rem; */
+  text-align: center;
+}
+
+.mat-column-action {
+  width: 0;
+  text-align: center;
+}
+
+/* .mat-btn-remove {
+  padding: 0;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+} */
+
+.parameter-table {
+  width: 23rem;
+}
+
+.blood-pressure {
+  display: flex;
+}
+
+.blood-pressure .bp-high {
+  min-width: 0;
+  margin-right: 1rem;
+}
+
+.blood-pressure .bp-low {
+  min-width: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+input[type=number] {
+-moz-appearance: textfield;
+}
+
+[hidden] {
+  display:none !important
+}
+
+.patient-search-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.patient-uhid {
+  width: 25rem;
+  margin-bottom: 2rem;
+}
+
+.btn-search {
+  margin-right: -.5rem;
+  min-width: 0;
+  height: 50px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.patient-info-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.patient-info {
+  min-width: 0;
+  width: 25rem;
+}
+
+.patient-info-title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  color: #000;
+  padding: 1rem 2rem;
+}
+
+.submit-btn{
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* .prescription-main-container {
+  opacity: .5;
+} */

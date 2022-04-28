@@ -1,0 +1,13 @@
+.snackbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.snackbar-icon {
+    margin: 0 1rem;
+}
+
+.snackbar-action {
+    color: #ff4081;
+}

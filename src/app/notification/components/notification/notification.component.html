@@ -1,0 +1,9 @@
+<div class="snackbar-container">
+    <div class="">
+        <span class="snackbar-icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
+        <span class="snackbar-message">{{ data.message }}</span>
+    </div>
+    <button class="snackbar-action" mat-button (click)="snackBarRef.dismiss()">
+        {{ data.action }}
+    </button>
+</div>

@@ -1,0 +1,39 @@
+<div class="login-wrapper">
+    <mat-card class="login-card">
+        <mat-card-title class="card-title">Login</mat-card-title>
+        <form [formGroup]="login" (ngSubmit)="loginUser()">
+            <div *ngIf="errorAlert" class="error-alert">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                {{ errorAlert }}
+            </div>
+            <mat-card-content class="card-content">
+                <mat-form-field class="form-field input-full-width" appearance="outline">
+                    <mat-label>Select Role</mat-label>
+                    <mat-select name="usertype" formControlName="usertype">
+                        <mat-option value="operator">Operator</mat-option>
+                        <mat-option value="doctor">Doctor</mat-option>
+                        <mat-option value="patient">Patient</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="login.controls['usertype'].invalid">{{getUsertypeErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-field input-full-width" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input type="text" name="email" formControlName="email" matInput>
+                    <mat-error *ngIf="login.controls['email'].invalid">{{getEmailErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-field input-full-width" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input type="password" name="password" formControlName="password" matInput>
+                    <mat-error *ngIf="login.controls['password'].invalid">{{getPasswordErrorMessage()}}</mat-error>
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions class="card-actions">
+                <button [disabled]="login.invalid" class="mat-btn login-btn" mat-raised-button color="accent">Login</button>
+                <a class="mat-btn" mat-button href="/">Forgot Password?</a>
+            </mat-card-actions>
+            <mat-card-footer class="card-footer">
+                <a class="mat-btn" mat-button routerLink="/auth/register">New user? Sign Up</a>
+            </mat-card-footer>
+        </form>
+    </mat-card>
+</div>

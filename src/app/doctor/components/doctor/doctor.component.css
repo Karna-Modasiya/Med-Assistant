@@ -1,0 +1,52 @@
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.app-title-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.app-title-wrapper .app-logo {
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app-title-wrapper .app-logo img {
+    height: 3rem;
+    width: 3rem;
+}
+
+.app-title-wrapper .app-title {
+    font-size: 1.3rem;
+}
+
+.user-info-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.user-info-wrapper .user-title {
+    font-size: 1rem;
+}
+
+.user-info-wrapper .user-logo {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-info-wrapper .user-logo img {
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+.btn-logout {
+    min-width: 0;
+}

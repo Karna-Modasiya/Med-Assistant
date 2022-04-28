@@ -1,0 +1,172 @@
+<div class="prescription-main-container">
+  <div [hidden]="showPrescription" class="patient-info-title-bar">
+    <span>UHID: {{patientuhid}}</span>
+    <span>Name: {{patientname}}</span>
+  </div>
+  <div class="prescription-container">
+    <!-- Patient Search Screen -->
+    <div [hidden]="!showPrescription" class="patient-search-container">
+      <mat-form-field class="form-field patient-uhid" appearance="outline">
+        <mat-label>Search Patient</mat-label>
+        <input type="text" name="patientuhid" [(ngModel)]="patientuhid" matInput>
+        <button class="btn-search" mat-button matSuffix (click)="findPatient()">
+          <mat-icon>search</mat-icon>
+        </button>
+        <!-- <mat-error *ngIf="login.controls['username'].invalid">{{getUsernameErrorMessage()}}</mat-error> -->
+      </mat-form-field>
+      <div class="patient-info-container">
+        <mat-form-field class="form-field patient-info" appearance="outline">
+          <mat-label>Name</mat-label>
+          <input type="text" name="patientname" [readonly]="true" [(ngModel)]="patientname" matInput>
+          <!-- <mat-error *ngIf="login.controls['username'].invalid">{{getUsernameErrorMessage()}}</mat-error> -->
+        </mat-form-field>
+        <mat-form-field class="form-field patient-info" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input type="text" name="patientemail" [readonly]="true" [(ngModel)]="patientemail" matInput>
+          <!-- <mat-error *ngIf="login.controls['username'].invalid">{{getUsernameErrorMessage()}}</mat-error> -->
+        </mat-form-field>
+        <mat-form-field class="form-field patient-info" appearance="outline">
+          <mat-label>Gender</mat-label>
+          <input type="text" name="patientgender" [readonly]="true" [(ngModel)]="patientgender" matInput>
+          <!-- <mat-error *ngIf="login.controls['username'].invalid">{{getUsernameErrorMessage()}}</mat-error> -->
+        </mat-form-field>
+        <mat-form-field class="form-field patient-info" appearance="outline">
+          <mat-label>Age</mat-label>
+          <input type="text" name="patientage" [readonly]="true" [(ngModel)]="patientage" matInput>
+          <!-- <mat-error *ngIf="login.controls['username'].invalid">{{getUsernameErrorMessage()}}</mat-error> -->
+        </mat-form-field>
+      </div>
+      <button [hidden]="!showPrescription" [disabled]="patientFound" mat-raised-button color="accent" (click)="writePrescription()">Write Prescription</button>
+    </div>
+    <!-- Write Prescription Screen -->
+    <div [hidden]="showPrescription">
+      <mat-spinner *ngIf="isLoading" class="spinner"></mat-spinner>
+      <div class="card-holder">
+        <mat-card class="medicine-input mat-elevation-z7">
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Medicine</mat-label>
+            <input type="text" name="medicine" [(ngModel)]="medicine" matInput>
+            <!-- <mat-error *ngIf="login.controls['username'].invalid">{{getUsernameErrorMessage()}}</mat-error> -->
+          </mat-form-field>
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Quantity</mat-label>
+            <input type="text" name="quantity" [(ngModel)]="quantity" matInput>
+            <!-- <mat-error *ngIf="login.controls['username'].invalid">{{getUsernameErrorMessage()}}</mat-error> -->
+          </mat-form-field>
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Dosage</mat-label>
+            <input type="text" name="dosage" [(ngModel)]="dosage" matInput>
+            <!-- <mat-error *ngIf="login.controls['username'].invalid">{{getUsernameErrorMessage()}}</mat-error> -->
+          </mat-form-field>
+          <mat-card-actions class="card-actions">
+            <button class="mat-btn" mat-raised-button color="accent" (click)="addToPrescription()">Add to
+              Prescription</button>
+            <button class="mat-btn" mat-flat-button (click)="clearPrescription()">Clear</button>
+          </mat-card-actions>
+        </mat-card>
+        <div [hidden]="false" class="parameter-table">
+          <table mat-table [dataSource]="parameterSource" matSort class="mat-elevation-z7">
+            <!-- Parameter Column -->
+            <ng-container matColumnDef="parameter">
+              <th mat-header-cell *matHeaderCellDef> Parameter </th>
+              <td mat-cell *matCellDef="let element"> {{ element.parameter }} </td>
+            </ng-container>
+  
+            <!-- Value Column -->
+            <ng-container matColumnDef="value">
+              <th mat-header-cell *matHeaderCellDef> Value </th>
+              <td mat-cell *matCellDef="let element"> {{ element.value }} </td>
+            </ng-container>
+  
+            <!-- Remove Column -->
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let element">
+                <button class="mat-btn-remov" (click)="deleteParameter(element.parameter)" mat-icon-button color="warn">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+  
+            <tr mat-header-row *matHeaderRowDef="parameterColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: parameterColumns;"></tr>
+          </table>
+        </div>
+        <mat-card class="parameter-input mat-elevation-z7">
+          <div class="blood-pressure">
+            <mat-form-field class="form-field bp-high" appearance="outline">
+              <mat-label>BP high</mat-label>
+              <input type="number" name="bphigh" [(ngModel)]="bphigh" matInput>
+              <span matSuffix>mmHg</span>
+              <!-- <mat-error *ngIf="login.controls['username'].invalid">{{getUsernameErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+            <mat-form-field class="form-field bp-low" appearance="outline">
+              <mat-label>BP low</mat-label>
+              <input type="number" name="bplow" [(ngModel)]="bplow" matInput>
+              <span matSuffix>mmHg</span>
+              <!-- <mat-error *ngIf="login.controls['username'].invalid">{{getUsernameErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+          </div>
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Sugar</mat-label>
+            <input type="number" name="sugar" [(ngModel)]="sugar" matInput>
+            <span matSuffix>mg/dL</span>
+            <!-- <mat-error *ngIf="login.controls['username'].invalid">{{getUsernameErrorMessage()}}</mat-error> -->
+          </mat-form-field>
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Temperature</mat-label>
+            <input type="number" name="temperature" [(ngModel)]="temperature" matInput>
+            <!-- <span matPrefix></span> -->
+            <span matSuffix>&deg;F</span>
+            <!-- <mat-error *ngIf="login.controls['username'].invalid">{{getUsernameErrorMessage()}}</mat-error> -->
+          </mat-form-field>
+          <mat-card-actions class="card-actions">
+            <button class="mat-btn" mat-raised-button color="accent" (click)="addToParameter()">Add</button>
+            <button class="mat-btn" mat-flat-button (click)="clearParameter()">Clear</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <table [hidden]="false" #prescriptionsTable mat-table [dataSource]="prescriptionSource" class="mat-elevation-z7">
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element"> {{ element.position }} </td>
+        </ng-container>
+  
+        <!-- Medicine Column -->
+        <ng-container matColumnDef="medicine">
+          <th mat-header-cell *matHeaderCellDef> Medicine </th>
+          <td mat-cell *matCellDef="let element"> {{ element.medicine }} </td>
+        </ng-container>
+  
+        <!-- Quantity Column -->
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef> Quantity </th>
+          <td mat-cell *matCellDef="let element"> {{ element.quantity }} </td>
+        </ng-container>
+  
+        <!-- Dosage Column -->
+        <ng-container matColumnDef="dosage">
+          <th mat-header-cell *matHeaderCellDef> Dosage </th>
+          <td mat-cell *matCellDef="let element"> {{ element.dosage }} </td>
+        </ng-container>
+  
+        <!-- Remove Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef> Action </th>
+          <td mat-cell *matCellDef="let element">
+            <button class="mat-btn-remov" (click)="deletePrescription(element.position)" mat-icon-button color="warn">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="prescriptionColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: prescriptionColumns;"></tr>
+      </table>
+      <div class="submit-btn">
+        <button mat-raised-button color="accent" (click)="sendPrescription()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+* {
+    /* margin: 0;
+    padding: 0; */
+    box-sizing: border-box;
+}
+
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 35vw;
+}
+
+.login-wrapper .login-card {
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    overflow: hidden;
+}
+
+.login-wrapper .login-card form {
+    padding: 1.5rem;
+}
+
+.login-wrapper .login-card .card-title {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background: #009da7;
+    color: white;
+    padding: 1rem 0;
+}
+
+.login-wrapper .login-card .card-content {
+    margin: 0;
+    padding: 0;
+}
+
+.login-wrapper .login-card .form-field {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+.login-wrapper .login-card .input-full-width {
+    width: 100%;
+}
+
+.login-wrapper .login-card .card-actions {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.login-wrapper .login-card .card-actions a {
+    padding: 0 .5rem;
+}
+
+.login-wrapper .login-card .card-footer {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.login-wrapper .login-card .card-footer a {
+    width: 100%;
+}
+
+.login-wrapper .login-card .mat-btn {
+    margin: 0;
+    padding: 0;
+}
+
+.login-wrapper .login-card .login-btn {
+    width: 100px;
+}
+
+.login-wrapper .login-card .error-alert {
+    margin-bottom: 1rem;
+    padding: .5rem;
+    background: rgb(255, 230, 230);
+    color: red;
+    border-left: 5px solid red;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.login-wrapper .login-card .error-alert i {
+    margin: 0 .25rem;
+}

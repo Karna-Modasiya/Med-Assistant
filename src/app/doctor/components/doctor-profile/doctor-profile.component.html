@@ -1,0 +1,38 @@
+<div class="patient-profile-container">
+  <h1>Personal Information</h1>
+  <mat-divider></mat-divider>
+  <div class="patient-personal-information">
+      <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" [(ngModel)]="name" [readonly]="true">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+          <mat-label>Degree</mat-label>
+          <input matInput type="text" [(ngModel)]="degree" [readonly]="true">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+          <mat-label>Specialisation</mat-label>
+          <input matInput type="text" [(ngModel)]="specialisation" [readonly]="true">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="text" [(ngModel)]="email" [readonly]="true">
+      </mat-form-field>
+  </div>
+  <!-- <h1>Contact Information</h1>
+  <mat-divider></mat-divider>
+  <div class="patient-contact-information">
+      <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="text" [(ngModel)]="email" [readonly]="true">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+          <mat-label>Mobile</mat-label>
+          <input matInput type="text" [(ngModel)]="phno" [readonly]="true">
+      </mat-form-field>
+  </div> -->
+  <div class="patient-profile-actions">
+      <button mat-raised-button color="accent">Update Profile</button>
+      <button mat-raised-button color="accent">Update Password</button>
+  </div>
+</div>

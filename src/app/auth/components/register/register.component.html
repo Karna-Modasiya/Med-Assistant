@@ -1,0 +1,280 @@
+<div class="signup-wrapper">
+    <mat-card class="signup-card">
+        <mat-card-title class="card-title">Register</mat-card-title>
+        <form name="myForm">
+            <div *ngIf="errorAlert" class="error-alert">
+                <div class="error-content">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    {{ errorAlert }}
+                </div>
+                <button (click)="closeErrorAlert()" mat-button><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div *ngIf="successAlert" class="success-alert">
+                <div class="success-content">
+                    <i class="fa-solid fa-circle-check"></i>
+                    {{ successAlert }}
+                </div>
+                <button (click)="closeSuccessAlert()" mat-button><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <mat-card-content class="card-content">
+                <mat-form-field [hidden]="sentotp" class="form-field input-full-width" appearance="outline">
+                    <mat-label>Select Role</mat-label>
+                    <mat-select name="usertype" [(ngModel)]="usertype">
+                      <mat-option value="operator">Operator</mat-option>
+                      <mat-option value="doctor">Doctor</mat-option>
+                      <mat-option value="patient">Patient</mat-option>
+                    </mat-select>
+                    <!-- <mat-error *ngIf="register.controls['usertype'].invalid">{{getUsertypeErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+                <!-- If usertype is Patient -->
+                <div class="patient-register" *ngIf="usertype == 'patient'" [hidden]="sentotp">
+                    <!-- Patient Name -->
+                    <mat-form-field class="form-field input-full-width" appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input type="text" name="patientname" [(ngModel)]="patientname" matInput required>
+                    </mat-form-field>
+                    <!-- Patient Gender -->
+                    <mat-form-field class="form-field" appearance="outline">
+                        <mat-label>Gender</mat-label>
+                        <mat-select name="patientgender" [(ngModel)]="patientgender">
+                            <mat-option value="Male">Male</mat-option>
+                            <mat-option value="Female">Female</mat-option>
+                            <mat-option value="Other">Other</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <!-- Patient DOB -->
+                    <mat-form-field class="form-field" appearance="outline">
+                        <mat-label>DOB</mat-label>
+                            <input name="patientdob" [(ngModel)]="patientdob" matInput [matDatepicker]="picker">
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    <!-- Patient Blood Group -->
+                    <mat-form-field class="form-field" appearance="outline">
+                        <mat-label>Blood Group</mat-label>
+                            <mat-select name="patientbloodgroup" [(ngModel)]="patientbloodgroup">
+                                <mat-option value="A+">A+</mat-option>
+                                <mat-option value="B+">B+</mat-option>
+                                <mat-option value="AB+">AB+</mat-option>
+                                <mat-option value="O+">O+</mat-option>
+                                <mat-option value="A-">A-</mat-option>
+                                <mat-option value="B-">B-</mat-option>
+                                <mat-option value="AB-">AB-</mat-option>
+                                <mat-option value="O-">O-</mat-option>
+                            </mat-select>
+                    </mat-form-field>
+                    <!-- Patient Phone Number -->
+                    <mat-form-field class="form-field" appearance="outline">
+                        <mat-label>Mobile</mat-label>
+                            <input type="number" name="patientmobile" [(ngModel)]="patientmobile" matInput required minlength="10">
+                    </mat-form-field>
+                    <!-- Patient Email ID -->
+                    <mat-form-field class="form-field input-full-width" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input type="email" name="patientemail" [(ngModel)]="patientemail" matInput required>
+                    </mat-form-field>
+                    <!-- Patient Password -->
+                    <mat-form-field class="form-field" appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input type="password" name="patientpassword" [(ngModel)]="patientpassword" matInput required>
+                    </mat-form-field>
+                    <!-- Patient Confirm Password -->
+                    <mat-form-field class="form-field" appearance="outline">
+                        <mat-label>Confirm Password</mat-label>
+                        <input type="password" name="patientconfirmpassword" [(ngModel)]="patientconfirmpassword" matInput required>
+                    </mat-form-field>
+                </div>
+                <!-- If usertype is Doctor -->
+                <div class="doctor-register" *ngIf="usertype == 'doctor'" [hidden]="sentotp">
+                    <!-- Doctor Name -->
+                    <mat-form-field class="form-field input-full-width" appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input type="text" name="doctorname" [(ngModel)]="doctorname" matInput required>
+                    </mat-form-field>
+                    <!-- Doctor Degree -->
+                    <mat-form-field class="form-field" appearance="outline">
+                        <mat-label>Degree</mat-label>
+                        <mat-select name="doctordegree" [(ngModel)]="doctordegree">
+                            <mat-option value="MBBS">MBBS</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <!-- Doctor Specialisation -->
+                    <mat-form-field class="form-field" appearance="outline">
+                        <mat-label>Specialisation</mat-label>
+                        <mat-select name="doctorspecialisation" [(ngModel)]="doctorspecialisation">
+                            <mat-option value="Audiologist">Audiologist</mat-option>
+                            <mat-option value="Dentist">Dentist</mat-option>
+                            <mat-option value="ENT Specialist">ENT Specialist</mat-option>
+                            <mat-option value="Paediatrician">Paediatrician</mat-option>
+                            <mat-option value="Psychiatrist">Psychiatrist</mat-option>
+                            <mat-option value="Radiologist">Radiologist</mat-option>
+                            <mat-option value="Pulmonologist">Pulmonologist</mat-option>
+                            <mat-option value="Endocrinologist">Endocrinologist</mat-option>
+                            <mat-option value="Oncologist">Oncologist</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <!-- Doctor Email ID -->
+                    <mat-form-field class="form-field input-full-width" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input type="email" name="doctoremail" [(ngModel)]="doctoremail" matInput required>
+                    </mat-form-field>
+                    <!-- Doctor Password -->
+                    <mat-form-field class="form-field" appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input type="password" name="doctorpassword" [(ngModel)]="doctorpassword" matInput required>
+                    </mat-form-field>
+                    <!-- Doctor Confirm Password -->
+                    <mat-form-field class="form-field" appearance="outline">
+                        <mat-label>Confirm Password</mat-label>
+                        <input type="password" name="doctorconfirmpassword" [(ngModel)]="doctorconfirmpassword" matInput required>
+                    </mat-form-field>
+                </div>
+                <!-- If usertype is Operator -->
+                <div class="operator-register" *ngIf="usertype == 'operator'" [hidden]="sentotp">
+                    <!-- Operator Name -->
+                    <mat-form-field class="form-field input-full-width" appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input type="text" name="operatorname" [(ngModel)]="operatorname" matInput>
+                    </mat-form-field>
+                    <!-- Operator Email ID -->
+                    <mat-form-field class="form-field input-full-width" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input type="email" name="operatoremail" [(ngModel)]="operatoremail" matInput>
+                    </mat-form-field>
+                    <!-- Operator Password -->
+                    <mat-form-field class="form-field" appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input type="password" name="operatorpassword" [(ngModel)]="operatorpassword" matInput>
+                    </mat-form-field>
+                    <!-- Operator Confirm Password -->
+                    <mat-form-field class="form-field" appearance="outline">
+                        <mat-label>Confirm Password</mat-label>
+                        <input type="password" name="operatorconfirmpassword" [(ngModel)]="operatorconfirmpassword" matInput>
+                    </mat-form-field>
+                </div>
+                <!-- Common details -->
+                <!-- <mat-form-field class="form-field input-full-width" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input type="email" name="useremail" [(ngModel)]="useremail" matInput>
+                </mat-form-field>
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input type="password" name="userpassword" matInput>
+                </mat-form-field>
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>Confirm Password</mat-label>
+                    <input type="password" name="userconfirmpassword" matInput>
+                </mat-form-field> -->
+                <div *ngIf="sentotp" class="otp-container">
+                    <div class="otp-header">
+                        <div class="otp-title">
+                            Enter OTP *
+                        </div>
+                        <div class="otp-subtitle">
+                            <!-- An OTP has been sent to your Email ID <strong>{{register.controls['email'].value}}</strong> -->
+                        </div>
+                        <div class="otp-info">
+                            The OTP is valid for <strong>3</strong> minutes
+                        </div>
+                    </div>
+                    <mat-form-field class="form-field " appearance="outline">
+                        <input type="text" #otp1 name="otp1" [(ngModel)]="otp11" maxlength="1" (keyup)="move($event, '', otp1, otp2)" required matInput>
+                    </mat-form-field>
+                    <mat-form-field class="form-field " appearance="outline">
+                        <input type="text" #otp2 name="otp2" [(ngModel)]="otp22" maxlength="1" (keyup)="move($event, otp1, otp2, otp3)" required matInput>
+                    </mat-form-field>
+                    <mat-form-field class="form-field " appearance="outline">
+                        <input type="text" #otp3 name="otp3" [(ngModel)]="otp33" maxlength="1" (keyup)="move($event, otp2, otp3, otp4)" required matInput>
+                    </mat-form-field>
+                    <mat-form-field class="form-field " appearance="outline">
+                        <input type="text" #otp4 name="otp4" [(ngModel)]="otp44" maxlength="1" (keyup)="move($event, otp3, otp4, '')" required matInput>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+            <mat-card-actions class="card-actions">
+                <!-- <button *ngIf="!sentotp" [disabled]="register.invalid" class="mat-btn register-btn" mat-raised-button color="accent" (click)="verifyUserEmail()">Get OTP</button> -->
+                <button *ngIf="!sentotp" [disabled]="!otpbtn" class="mat-btn register-btn" mat-raised-button color="accent" (click)="verifyUserEmail()">Get OTP</button>
+                <button *ngIf="sentotp" [disabled]="false" class="mat-btn register-btn" mat-raised-button color="accent" (click)="registerNewUser()">Register</button>
+                <!-- <button *ngIf="sentotp" [disabled]="register.invalid" class="mat-btn register-btn" mat-raised-button color="accent" (click)="registerNewUser()">Register</button> -->
+                <a *ngIf="!sentotp" class="mat-btn-stroked" mat-stroked-button color="accent" routerLink="/auth/login">Have an account? Sign In</a>
+                <button *ngIf="sentotp" class="mat-btn-stroked" mat-stroked-button color="accent" (click)="reVerifyUserEmail()">Resend OTP</button>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+  </div>
+  <!-- <div class="signup-wrapper">
+    <mat-card class="signup-card">
+        <mat-card-title class="card-title">Register</mat-card-title>
+        <form [formGroup]="register">
+            <div *ngIf="errorAlert" class="error-alert">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                {{ errorAlert }}
+            </div>
+            <div *ngIf="successAlert" class="success-alert">
+                <i class="fa-solid fa-circle-check"></i>
+                {{ successAlert }}
+            </div>
+            <mat-card-content class="card-content">
+                <mat-form-field class="form-field input-full-width" appearance="outline">
+                    <mat-label>Select Role</mat-label>
+                    <mat-select name="usertype" formControlName="usertype">
+                      <mat-option value="operator">Operator</mat-option>
+                      <mat-option value="doctor">Doctor</mat-option>
+                      <mat-option value="patient">Patient</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="register.controls['usertype'].invalid">{{getUsertypeErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-field input-full-width" appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input type="text" name="username" formControlName="username" matInput>
+                    <mat-error *ngIf="register.controls['username'].invalid">{{getUsernameErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-field input-full-width" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input type="email" name="email" formControlName="email" matInput>
+                    <mat-error *ngIf="register.controls['email'].invalid">{{getEmailErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-field input-full-width" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input type="password" name="password" formControlName="password" matInput>
+                    <mat-error *ngIf="register.controls['password'].invalid">{{getPasswordErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <div *ngIf="sentotp" class="otp-container">
+                    <div class="otp-header">
+                        <div class="otp-title">
+                            Enter OTP *
+                        </div>
+                        <div class="otp-subtitle">
+                            An OTP has been sent to your Email ID <strong>{{register.controls['email'].value}}</strong>
+                        </div>
+                        <div class="otp-info">
+                            The OTP is valid for <strong>3</strong> minutes
+                        </div>
+                    </div>
+                    <mat-form-field class="form-field " appearance="outline">
+                        <input type="text" #otp1 name="otp1" formControlName="otp1" maxlength="1" (keyup)="move($event, '', otp1, otp2)" required matInput>
+                    </mat-form-field>
+                    <mat-form-field class="form-field " appearance="outline">
+                        <input type="text" #otp2 name="otp2" formControlName="otp2" maxlength="1" (keyup)="move($event, otp1, otp2, otp3)" required matInput>
+                    </mat-form-field>
+                    <mat-form-field class="form-field " appearance="outline">
+                        <input type="text" #otp3 name="otp3" formControlName="otp3" maxlength="1" (keyup)="move($event, otp2, otp3, otp4)" required matInput>
+                    </mat-form-field>
+                    <mat-form-field class="form-field " appearance="outline">
+                        <input type="text" #otp4 name="otp4" formControlName="otp4" maxlength="1" (keyup)="move($event, otp3, otp4, '')" required matInput>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+            <mat-card-actions class="card-actions">
+                <button *ngIf="!sentotp" [disabled]="register.invalid" class="mat-btn register-btn" mat-raised-button color="accent" (click)="verifyUserEmail()">Get OTP</button>
+                <button *ngIf="sentotp" [disabled]="register.invalid" class="mat-btn register-btn" mat-raised-button color="accent" (click)="registerNewUser()">Register</button>
+                <a class="mat-btn" mat-button href="/">Forgot Password?</a>
+                <a *ngIf="!sentotp" class="mat-btn-stroked" mat-stroked-button color="accent" routerLink="/auth/login">Have an account? Sign In</a>
+                <button *ngIf="sentotp" class="mat-btn-stroked" mat-stroked-button color="accent" (click)="reVerifyUserEmail()">Resend OTP</button>
+            </mat-card-actions>
+            <mat-card-footer class="card-footer">
+            </mat-card-footer>
+        </form>
+    </mat-card>
+  </div> -->
